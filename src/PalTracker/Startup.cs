@@ -26,6 +26,14 @@ namespace PalTracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSingleton(sp => new WelcomeMessage(Configuration.GetValue<string>("WELCOME_MESSAGE", "WELCOME_MESSAGE not configured.")));
+            services.AddSingleton(sp => new CloudFoundryInfo(
+                Configuration.GetValue<string>("PORT", "80"), 
+                Configuration.GetValue<string>("MEMORY_LIMIT", "512"), 
+                Configuration.GetValue<string>("CF_INSTANCE_INDEX", "0"), 
+                Configuration.GetValue<string>("CF_INSTANCE_ADDR", "Who knows!")
+            ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
