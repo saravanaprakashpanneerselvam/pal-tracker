@@ -3,6 +3,6 @@ applications:
 - name: pal-tracker
   path: src/PalTracker/bin/Release/netcoreapp2.1/publish/
   routes:
-  - route: apps.evans.pal.pivotal.io
+  - route: prodcution-pal-tracker-charles-amber.apps.evans.pal.pivotal.io
   env:
     WELCOME_MESSAGE: Hello from the production environmen
